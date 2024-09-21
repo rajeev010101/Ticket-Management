@@ -11,4 +11,8 @@ app.use(cors({
 app.use(express.json({limit: "16kb"}))
 app.use(cookieParser())
 
+import UserRoute from "./routes/UserRoute"
+import ticketRoutes from './routes/tickets.js';
+import bookingRoutes from './routes/bookings.js';  
+
 export {app}
