@@ -5,7 +5,7 @@ import Booking from '../models/booking.js';
 const router = express.Router();
 
 // Create a new booking
-router.post('/', async (req, res) => {
+router.post('/booking', async (req, res) => {
     const { ticketId, userId, numberOfTickets, totalPrice } = req.body;
     try {
         const booking = new Booking({
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get all bookings
-router.get('/', async (req, res) => {
+router.get('/booking', async (req, res) => {
     const bookings = await Booking.find().populate('ticketId userId');
     res.send(bookings);
 });

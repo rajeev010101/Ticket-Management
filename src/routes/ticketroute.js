@@ -1,11 +1,11 @@
 // routes/tickets.js
 import express from 'express';
-import Ticket from '../models/ticket.js';
+import Ticket from '../models/tickets.js';
 
 const router = express.Router();
 
 // Create a new ticket
-router.post('/', async (req, res) => {
+router.post('/ticket', async (req, res) => {
     const { title, description } = req.body;
     try {
         const ticket = new Ticket({ title, description });
@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
 });
 
 // get tickets
-router.get('/', async (req, res) => {
+router.get('/ticket', async (req, res) => {
     const tickets = await Ticket.find();
     res.send(tickets);
 });
 
 // Get a ticket by ID
-router.get('/:id', async (req, res) => {
+router.get('/ticket:id', async (req, res) => {
     try {
         const ticket = await Ticket.findById(req.params.id);
         if (!ticket) return res.status(404).send('Ticket not found');
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a ticket by ID
-router.put('/:id', async (req, res) => {
+router.put('/ticket:id', async (req, res) => {
     const { title, description, status } = req.body;
     try {
         const ticket = await Ticket.findByIdAndUpdate(req.params.id, {
@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a ticket by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/ticket:id', async (req, res) => {
     try {
         const ticket = await Ticket.findByIdAndRemove(req.params.id);
         if (!ticket) return res.status(404).send('Ticket not found');

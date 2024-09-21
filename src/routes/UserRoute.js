@@ -1,4 +1,5 @@
 // routes/users.js
+import {Router} from "express"
 import express from 'express';
 import User from '../models/user.js';
 import bcrypt from 'bcrypt';
@@ -6,7 +7,7 @@ import bcrypt from 'bcrypt';
 const router = express.Router();
 
 // CREATE a new user
-router.post('/', async (req, res) => {
+router.post("/register", async (req, res) => {
     const { username, email, password, role } = req.body;
 
     // Check if the email is already in use
@@ -35,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 // GET all users
-router.get('/', async (req, res) => {
+router.get('/register', async (req, res) => {
     try {
         const users = await User.find();
         res.send(users);
@@ -45,7 +46,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET a single user by ID
-router.get('/:id', async (req, res) => {
+router.get('/register:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) return res.status(404).send('User not found');
@@ -56,7 +57,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // UPDATE a user by ID
-router.put('/:id', async (req, res) => {
+router.put('/register:id', async (req, res) => {
     const { username, email, role } = req.body;
 
     try {
@@ -76,7 +77,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE a user by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/register:id', async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
         if (!user) return res.status(404).send('User not found');
