@@ -10,15 +10,19 @@ app.use(cors({
 
 app.use(express.json({limit: "16kb"}))
 app.use(cookieParser())
+
+
 import UserRoute from './routes/UserRoute.js'
 import bookingRoute from './routes/bookingRoute.js'
 import ticketroute from './routes/ticketroute.js' 
 
 
-app.use("/User", UserRoute)
+app.use("/api", UserRoute)
 
-app.use("/booking", bookingRoute)
+http://localhost:3000/api/register
 
-app.use("/ticket", ticketroute)
+app.use("/api", bookingRoute)
+
+app.use("/api", ticketroute)
  
 export {app}

@@ -1,10 +1,9 @@
 // routes/users.js
-import {Router} from "express"
-import express from 'express';
-import User from '../models/user.js';
+import {Router} from "express";
+import { User } from '../models/user.js';
 import bcrypt from 'bcrypt';
 
-const router = express.Router();
+const router = Router();
 
 // CREATE a new user
 router.post("/register", async (req, res) => {
